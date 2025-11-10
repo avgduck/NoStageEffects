@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.1] - 2025-11-10
+
+### Removed
+
+- Remove excessive logging from KO Camera patch ([`7c915e5`](https://github.com/avgduck/NoStageEffects/commit/7c915e5f19ffb215bddd0552cc1ab14185f93c1a))
+
+### Fixed
+
+- Fix missing LLBML Thunderstore dependency ([`f09946f`](https://github.com/avgduck/NoStageEffects/commit/f09946fa725822b11764b661ecf86aa0c3b34457))
+- Fix disabling small blimps on Pool ([`9510896`](https://github.com/avgduck/NoStageEffects/commit/9510896768866bad7ad9d16f27482aed95291b97))
+- Prevent eclipse triggering in Doombox boss fight ([`b9820d6`](https://github.com/avgduck/NoStageEffects/commit/b9820d61413961036057c409ca4cad0f9bb4c02a))
+
 ## [1.2.0] - 2025-11-10
 
 ### Added
@@ -27,6 +39,7 @@
 
 _Initial release_
 
+[1.2.1]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.2.1
 [1.2.0]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.2.0
 [1.1.0]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.1.0
 [1.0.1]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.0.1

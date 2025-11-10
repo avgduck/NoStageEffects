@@ -1,8 +1,9 @@
 ﻿{
   "name": "NoStageEffects",
-  "version_number": "1.2.0",
+  "version_number": "1.2.1",
   "website_url": "https://github.com/avgduck/NoStageEffects",
   "description": "Disables distracting stage animations and effects",
   "dependencies": [
+    "Glomzubuk-LLBModdingLib-0.10.4"
   ]
 }

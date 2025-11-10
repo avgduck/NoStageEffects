@@ -8,6 +8,6 @@ public class PluginDetails
     internal const string DEPENDENCY_MODMENU = "no.mrgentle.plugins.llb.modmenu";
 
     internal static readonly List<string> MODMENU_TEXT = [
-        "Disables stage distractions"
+        "Disables stage animations and eclipse/heaven speed effects"
     ];
 }

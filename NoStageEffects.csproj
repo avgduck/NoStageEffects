@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net35</TargetFramework>
         <Product>NoStageEffects</Product>
-        <Version>0.1.0</Version>
+        <Version>1.0.0</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>latest</LangVersion>
         <RestoreAdditionalProjectSources>
@@ -31,6 +31,13 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+        <_ReleaseFiles Include="Thunderstore\icon.png" />
+        <_ReleaseFiles Include="Thunderstore\manifest.json" />
+        <_ReleaseFiles Include="README.md" />
+        <_ReleaseFiles Include="CHANGELOG.md" />
+    </ItemGroup>
+
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <Copy SourceFiles="bin\Debug\net35\NoStageEffects.dll" DestinationFolder="build" />
 
@@ -38,5 +45,8 @@
             <_BuildFiles Include="build\*.*" />
         </ItemGroup>
         <Copy SourceFiles="@(_BuildFiles)" DestinationFolder="C:\Users\Owner\AppData\Roaming\r2modmanPlus-local\LethalLeagueBlaze\profiles\Dev\BepInEx\plugins\NoStageEffects" />
+
+        <Copy SourceFiles="@(_BuildFiles)" DestinationFolder="release" />
+        <Copy SourceFiles="@(_ReleaseFiles)" DestinationFolder="release" />
     </Target>
 </Project>

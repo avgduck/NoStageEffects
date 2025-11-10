@@ -139,8 +139,8 @@ internal static class HarmonyPatches
         [HarmonyPostfix]
         private static void Pool_Awake_Postfix(BlimpScript __instance)
         {
-            if (!Configs.DoPoolBlimp.Value) Plugin.LogGlobal.LogInfo("Disabling Pool blimp");
-            __instance.gameObject.SetActive(Configs.DoPoolBlimp.Value);
+            if (!Configs.DoPoolBlimps.Value) Plugin.LogGlobal.LogInfo("Disabling Pool blimps");
+            __instance.gameObject.SetActive(Configs.DoPoolBlimps.Value);
         }
         
         [HarmonyPatch(typeof(AssemblyScript), nameof(AssemblyScript.Start))]

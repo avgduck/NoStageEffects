@@ -16,7 +16,7 @@ internal static class Configs
     internal static ConfigEntry<bool> DoSubwayMove { get; private set; }
     internal static ConfigEntry<bool> DoStadiumScreen { get; private set; }
     internal static ConfigEntry<bool> DoStreetsDrones { get; private set; }
-    internal static ConfigEntry<bool> DoPoolBlimp { get; private set; }
+    internal static ConfigEntry<bool> DoPoolBlimps { get; private set; }
     internal static ConfigEntry<bool> DoFactoryBuckets { get; private set; }
     internal static ConfigEntry<bool> DoSewersSubmarine { get; private set; }
     
@@ -44,7 +44,7 @@ internal static class Configs
         DoSubwayMove = config.Bind<bool>("Toggles", "SubwayMove", false, "Subway moves between stations and makes turns");
         DoStadiumScreen = config.Bind<bool>("Toggles", "StadiumScreen", false, "Stadium screen shows players and ball");
         DoStreetsDrones = config.Bind<bool>("Toggles", "StreetsDrones", false, "Drones appear on Streets");
-        DoPoolBlimp = config.Bind<bool>("Toggles", "PoolBlimp", false, "Large blimp appears on Pool");
+        DoPoolBlimps = config.Bind<bool>("Toggles", "PoolBlimps", false, "Blimps appear on Pool");
         DoFactoryBuckets = config.Bind<bool>("Toggles", "FactoryBuckets", false, "Iron buckets appear on Factory");
         DoSewersSubmarine = config.Bind<bool>("Toggles", "SewersSubmarine", false, "Submarine appears on Sewers");
     }

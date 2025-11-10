@@ -12,6 +12,7 @@
             https://nuget.samboy.dev/v3/index.json
         </RestoreAdditionalProjectSources>
         <RootNamespace>NoStageEffects</RootNamespace>
+        <AssemblyName>avgduck.plugins.llb.nostageeffects</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

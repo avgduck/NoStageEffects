@@ -10,7 +10,9 @@ public static class HarmonyPatches
         Harmony harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
         
         harmony.PatchAll(typeof(ScreenEffects));
+        Plugin.LogGlobal.LogInfo("Screen effects patches applied");
         harmony.PatchAll(typeof(StagePatches));
+        Plugin.LogGlobal.LogInfo("Stage animation patches applied");
     }
 
     private static class ScreenEffects
@@ -21,6 +23,7 @@ public static class HarmonyPatches
         {
             if (state == BGState.ECLIPSE || state == BGState.HEAVEN)
             {
+                Plugin.LogGlobal.LogInfo("Blocking attempt to activate BG state " + (state == BGState.ECLIPSE ? "ECLIPSE" : "HEAVEN"));
                 return false;
             }
 

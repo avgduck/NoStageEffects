@@ -10,15 +10,24 @@ public class Plugin : BaseUnityPlugin
 {
     public static Plugin Instance { get; private set; }
     internal static ManualLogSource LogGlobal { get; private set; }
+    internal bool IsGamePaused { get; set; } = false;
 
     private void Awake()
     {
+        Instance = this;
         LogGlobal = base.Logger;
         LogGlobal.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
+        
+        HarmonyPatches.PatchAll();
     }
 
     private void Start()
     {
         LLBML.Utils.ModDependenciesUtils.RegisterToModMenu(this.Info, PluginDetails.MODMENU_TEXT);
+    }
+
+    public float GetBGTimeScale()
+    {
+        return IsGamePaused ? 0f : 1f;
     }
 }

@@ -31,7 +31,7 @@ internal static class HarmonyPatches
         }
         [HarmonyPatch(typeof(BG), nameof(BG.SetState))]
         [HarmonyPrefix]
-        private static void SetState_Prefix(ref BGState state)
+        private static void SetState_Prefix(ref BGState state, ref bool stageReset)
         {
             if (!BGIntro)
             {
@@ -39,10 +39,11 @@ internal static class HarmonyPatches
                 return;
             }
             
-            if (state == BGState.ECLIPSE && !Configs.DoEclipseEffect.Value)
+            if ((state == BGState.ECLIPSE || stageReset) && !Configs.DoEclipseEffect.Value)
             {
                 Plugin.LogGlobal.LogInfo("Blocking attempt to activate BG state ECLIPSE");
                 state = BGState.NORMAL;
+                stageReset = false;
             }
             else if (state == BGState.HEAVEN && !Configs.DoHeavenEffect.Value)
             {

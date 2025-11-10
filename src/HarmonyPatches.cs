@@ -145,8 +145,19 @@ internal static class HarmonyPatches
         [HarmonyPostfix]
         private static void Stadium_Awake_Postfix(Stadium_ScreenCamController __instance)
         {
-            if (!Configs.DoStadiumScreen.Value) Plugin.LogGlobal.LogInfo("Disabling Stadium screen");
-            __instance._cam.enabled = Configs.DoStadiumScreen.Value;
+            if (Configs.DoStadiumScreen.Value) return;
+            
+            Plugin.LogGlobal.LogInfo("Disabling Stadium screen");
+            __instance.OnEclipse(true);
+        }
+        [HarmonyPatch(typeof(Stadium_ScreenCamController), nameof(Stadium_ScreenCamController.OnEclipse))]
+        [HarmonyPrefix]
+        private static void Stadium_OnEclipse_Prefix(ref bool pEclipseActive)
+        {
+            if (Configs.DoStadiumScreen.Value || pEclipseActive) return;
+            
+            Plugin.LogGlobal.LogInfo("Disabling Stadium screen");
+            pEclipseActive = true;
         }
         
         [HarmonyPatch(typeof(SubmarineScript), nameof(SubmarineScript.StartAnim))]

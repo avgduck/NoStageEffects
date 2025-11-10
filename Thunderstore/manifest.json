@@ -1,0 +1,8 @@
+﻿{
+  "name": "NoStageEffects",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/avgduck/NoStageEffects",
+  "description": "Disables distracting stage animations and effects",
+  "dependencies": [
+  ]
+}

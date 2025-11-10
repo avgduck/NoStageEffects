@@ -29,13 +29,6 @@
       <Reference Include="Assembly-CSharp-publicized">
         <HintPath>libs\Assembly-CSharp-publicized.dll</HintPath>
       </Reference>
-      <Reference Include="LLBModdingLib">
-        <HintPath>libs\LLBModdingLib.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="build\" />
     </ItemGroup>
 
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">

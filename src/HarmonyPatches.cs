@@ -27,5 +27,18 @@ public static class HarmonyPatches
 
             return true;
         }
+
+        [HarmonyPatch(typeof(GameCamera), nameof(GameCamera.StartWave))]
+        [HarmonyPrefix]
+        private static bool StartWave_Prefix()
+        {
+            return false;
+        }
+        [HarmonyPatch(typeof(GameCamera), nameof(GameCamera.StartGlitchWave))]
+        [HarmonyPrefix]
+        private static bool StartGlitchWave_Prefix()
+        {
+            return false;
+        }
     }
 }

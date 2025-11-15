@@ -11,6 +11,7 @@ internal static class Configs
     internal static ConfigEntry<bool> DoEclipseEffect { get; private set; }
     internal static ConfigEntry<bool> DoHeavenEffect { get; private set; }
     internal static ConfigEntry<bool> DoKOCamera { get; private set; }
+    internal static ConfigEntry<bool> DoStageIntros { get; private set; }
     
     internal static ConfigEntry<bool> DoElevatorMove { get; private set; }
     internal static ConfigEntry<bool> DoSubwayMove { get; private set; }
@@ -22,11 +23,6 @@ internal static class Configs
     
     internal static void Init()
     {
-        ModDependenciesUtils.RegisterToModMenu(Plugin.Instance.Info, [
-            "This mod allows you to disable distracting stage effects and animations",
-            "All effects are disabled by default"
-        ]);
-
         config = Plugin.Instance.Config;
 
         config.Bind("General Effects", "mm_header_general", "General Effects", new ConfigDescription("", null, "modmenu_header"));
@@ -35,6 +31,7 @@ internal static class Configs
         DoEclipseEffect = config.Bind<bool>("Toggles", "EclipseEffect", false, "Stage transition at 250 ball speed");
         DoHeavenEffect = config.Bind<bool>("Toggles", "HeavenEffect", false, "Pure white stage effect at 1,000,000 ball speed");
         DoKOCamera = config.Bind<bool>("Toggles", "KOCamera", false, "Cinematic camera on kill in local games");
+        DoStageIntros = config.Bind<bool>("Toggles", "StageIntros", false, "Intro cutscene in local games");
 
         config.Bind("gap", "mm_header_gap", 50, new ConfigDescription("", null, "modmenu_gap"));
         
@@ -47,5 +44,10 @@ internal static class Configs
         DoPoolBlimp = config.Bind<bool>("Toggles", "PoolBlimp", false, "Large blimp appears on Pool");
         DoFactoryBuckets = config.Bind<bool>("Toggles", "FactoryBuckets", false, "Iron buckets appear on Factory");
         DoSewersSubmarine = config.Bind<bool>("Toggles", "SewersSubmarine", false, "Submarine appears on Sewers");
+        
+        ModDependenciesUtils.RegisterToModMenu(Plugin.Instance.Info, [
+            "This mod allows you to disable distracting stage effects and animations",
+            "All effects are disabled by default"
+        ]);
     }
 }

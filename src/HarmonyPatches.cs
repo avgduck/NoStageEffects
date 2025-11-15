@@ -1,4 +1,7 @@
-﻿using HarmonyLib;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection.Emit;
+using HarmonyLib;
 using LLBML.Math;
 using LLBML.Settings;
 using LLBML.States;
@@ -12,7 +15,7 @@ internal static class HarmonyPatches
 {
     internal static void PatchAll()
     {
-        Harmony harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
+        Harmony harmony = new Harmony(Plugin.GUID);
         
         harmony.PatchAll(typeof(ScreenEffects));
         Plugin.LogGlobal.LogInfo("Screen effects patches applied");
@@ -70,6 +73,36 @@ internal static class HarmonyPatches
         private static bool ActivateKOCamMode_Prefix()
         {
             return Configs.DoKOCamera.Value;
+        }
+
+        [HarmonyPatch(typeof(OGONAGCFDPK), nameof(OGONAGCFDPK.FHHKKMAOEKF), MethodType.Enumerator)]
+        [HarmonyTranspiler]
+        private static IEnumerable<CodeInstruction> KGameStart_MoveNext_Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
+        {
+            /*
+             * match
+             * if (!this.skipTitleAnimations && !GameSettings.isOnline)
+             */
+            CodeMatcher cm = new CodeMatcher(instructions, il);
+            cm.Start();
+            cm.MatchForward(true, [
+                new CodeMatch(OpCodes.Ldarg_0), // this
+                new CodeMatch(OpCodes.Ldfld), // .skipTitleAnimations
+                new CodeMatch(OpCodes.Call), // call skipTitleAnimations property getter
+                new CodeMatch(OpCodes.Brtrue), // if true, break
+                new CodeMatch(OpCodes.Call), // call GameSettings.isOnline property getter
+                new CodeMatch(OpCodes.Brtrue) // if true, break
+            ]);
+            CodeInstruction brCopy = cm.Instruction;
+            cm.Insert(
+                Transpilers.EmitDelegate<Func<bool>>(() =>
+                {
+                    if (!Configs.DoStageIntros.Value) Plugin.LogGlobal.LogInfo("Skipping stage intro cutscene");
+                    return !Configs.DoStageIntros.Value;
+                }),
+                new CodeInstruction(brCopy) // if true, break
+            );
+            return cm.InstructionEnumeration();
         }
     }
     

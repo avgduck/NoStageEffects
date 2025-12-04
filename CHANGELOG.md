@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.0] - 2025-12-03
+
+### Added
+
+- Add forcing game/video settings (screen shake off, white flashes off, fixed camera mode) ([`ce7924b`](https://github.com/avgduck/NoStageEffects/commit/ce7924bfb9528e844a9f0c23f9ad66c576b12cfc))
+
 ## [1.3.0] - 2025-11-15
 
 ### Added
@@ -45,6 +51,7 @@
 
 _Initial release_
 
+[1.4.0]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.4.0
 [1.3.0]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.3.0
 [1.2.1]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.2.1
 [1.2.0]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.2.0

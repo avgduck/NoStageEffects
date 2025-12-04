@@ -19,6 +19,9 @@ internal static class HarmonyPatches
         
         harmony.PatchAll(typeof(ScreenEffects));
         Plugin.LogGlobal.LogInfo("Screen effects patches applied");
+        harmony.PatchAll(typeof(ForceGameSettings));
+        Plugin.LogGlobal.LogInfo("Force game settings patches applied");
+        Plugin.Instance.Config.SettingChanged += (sender, args) => ForceGameSettings.UpdateGameSettingsConfig();
         harmony.PatchAll(typeof(StagePatches));
         Plugin.LogGlobal.LogInfo("Stage animation patches applied");
     }
@@ -105,8 +108,25 @@ internal static class HarmonyPatches
             return cm.InstructionEnumeration();
         }
     }
+
+    private static class ForceGameSettings
+    {
+        [HarmonyPatch(typeof(JOMBNFKIHIC), nameof(JOMBNFKIHIC.LIDLDDLGBJJ))]
+        [HarmonyPostfix]
+        private static void UpdateToConfigAll_Postfix()
+        {
+            if (!Configs.AllowScreenShake.Value) JOMBNFKIHIC.KKLCEPHJMAM = false;
+            if (!Configs.AllowWhiteFlashes.Value) JOMBNFKIHIC.AAJCGIGIFCD = false;
+            if (!Configs.AllowMovingCamera.Value) JOMBNFKIHIC.DAIOEHBEJBC = false;
+        }
+
+        internal static void UpdateGameSettingsConfig()
+        {
+            JOMBNFKIHIC.LIDLDDLGBJJ();
+        }
+    }
     
-    public static class StagePatches
+    private static class StagePatches
     {
         [HarmonyPatch(typeof(ElevatorScript), nameof(ElevatorScript.SetState))]
         [HarmonyPrefix]

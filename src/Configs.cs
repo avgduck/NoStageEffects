@@ -13,6 +13,10 @@ internal static class Configs
     internal static ConfigEntry<bool> DoKOCamera { get; private set; }
     internal static ConfigEntry<bool> DoStageIntros { get; private set; }
     
+    internal static ConfigEntry<bool> AllowScreenShake { get; private set; }
+    internal static ConfigEntry<bool> AllowWhiteFlashes { get; private set; }
+    internal static ConfigEntry<bool> AllowMovingCamera { get; private set; }
+    
     internal static ConfigEntry<bool> DoElevatorMove { get; private set; }
     internal static ConfigEntry<bool> DoSubwayMove { get; private set; }
     internal static ConfigEntry<bool> DoStadiumScreen { get; private set; }
@@ -34,7 +38,13 @@ internal static class Configs
         DoStageIntros = config.Bind<bool>("Toggles", "StageIntros", false, "Intro cutscene in local games");
 
         config.Bind("gap", "mm_header_gap", 50, new ConfigDescription("", null, "modmenu_gap"));
+        config.Bind("Force Game Settings", "mm_header_settings", "Force Game Settings", new ConfigDescription("", null, "modmenu_header"));
         
+        AllowScreenShake = config.Bind<bool>("Toggles", "AllowScreenShake", false, "Allow screen shake to be used in the game options");
+        AllowWhiteFlashes = config.Bind<bool>("Toggles", "AllowWhiteFlashes", false, "Allow white flashes to be used in the game options");
+        AllowMovingCamera = config.Bind<bool>("Toggles", "AllowMovingCamera", false, "Allow moving camera to be used in the game options");
+        
+        config.Bind("gap", "mm_header_gap2", 50, new ConfigDescription("", null, "modmenu_gap"));
         config.Bind("Stage Animations", "mm_header_stages", "Stage Animations", new ConfigDescription("", null, "modmenu_header"));
         
         DoElevatorMove = config.Bind<bool>("Toggles", "ElevatorMove", false, "Elevator moves between floors");

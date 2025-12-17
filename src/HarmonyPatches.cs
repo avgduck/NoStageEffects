@@ -189,10 +189,10 @@ internal static class HarmonyPatches
         private static void Pool_Awake_Prefix(BlimpScript __instance)
         {
             if (Configs.DoPoolBlimp.Value) return;
-
-            Plugin.LogGlobal.LogInfo("Disabling Pool blimp animations path2 and path5");
+            
             if (__instance.gameObject.name == "Blimp_Animated 1") blimp1Intro = true;
             else if (__instance.gameObject.name == "Blimp_Animated 2") blimp2Intro = true;
+            else Plugin.LogGlobal.LogInfo("Disabling Pool blimp animations path2 and path5");
         }
         [HarmonyPatch(typeof(BlimpScript), nameof(BlimpScript.Update))]
         [HarmonyPostfix]

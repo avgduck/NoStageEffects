@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.2] - 2025-12-17
+
+### Added
+
+- Add logging for Pool blimps being disabled for parity with other stages ([`8095382`](https://github.com/avgduck/NoStageEffects/commit/80953825d559dcedc3318a53da313e18dd92504d))
+
+### Removed
+
+- Remove excessive logging for blocking background eclipse and heaven states ([`81f9a34`](https://github.com/avgduck/NoStageEffects/commit/81f9a340c48c797952b89bff500388a65554c320))
+
+### Changed
+
+- The train on Subway now stays stopped at the first station instead of continuing straight through the tunnel indefinitely ([`05a3fd1`](https://github.com/avgduck/NoStageEffects/commit/05a3fd11e6bb58d182f8de898720ab42a07ebcf3))
+
 ## [1.4.1] - 2025-12-05
 
 ### Fixed
@@ -57,6 +71,7 @@
 
 _Initial release_
 
+[1.4.2]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.4.2
 [1.4.1]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.4.1
 [1.4.0]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.4.0
 [1.3.0]: https://github.com/avgduck/NoStageEffects/releases/tag/v1.3.0

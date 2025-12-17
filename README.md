@@ -17,7 +17,7 @@ Tournament-ready mod to disable distracting stage animations and effects.
 ### Stage-Specific Changes:
 
 - The elevator on **New Rise District (Elevator)** no longer leaves the 1st floor
-- The train on **The Subways (Subway)** now continues straight without turning or stopping
+- The train on **The Subways (Subway)** no longer leaves the 1st station
 - The screen on **Paradise Field (Stadium)** is now turned off
 - The blimps on **Abandoned Pool (Pool)** no longer pass right behind the stage
 - The iron buckets on **Workbot Factory (Factory)** no longer appear
